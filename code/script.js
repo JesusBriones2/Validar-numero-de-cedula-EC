@@ -1,113 +1,40 @@
-// Elementos del formulario.
-const input = document.getElementById('in');
-let contador = document.getElementById('contador');
-
-
-
 // Evento de teclado al input.
-input.addEventListener('keyup', () => {
+document.querySelector('.input').addEventListener('keyup', (e) => {
 
-	// obtiene la respuesta de la validacion.
-	let res = validarCI(input.value);
+	const ci = e.target.value; // Obtiene el dato del input.
 
+	// Incrementa o decrementa el contador de digitos.
+	const counter = document.querySelector('.counter');
+	counter.innerHTML = `${ci.length} - 10`;
 
-	// Funcion del contador.
-	funContador(input);
+	// Verifica si se ha ingresado mas de 10 digitos.
+	counter.style.color = 
+	ci.length > 10 ? 'red':
+	ci.length == 10 ? '#05bb05': '#555';
 
-
-	// Si la respuesta de la validacion es valida.
-	if ( res && input.value.length < 11 ) {
-		input.style.borderColor = '#2DAF5E'; // Input color verde.
-	}
-	else if ( res == false && input.value.length == 10 ) {
-		input.style.borderColor = '#C94747'; // Input color rojo.
-	}
-	else { 
-		input.style.borderColor = '#000'; // Imput color negro. 
-	}
+	// Indica si la cedula ingresada es valida.
+	e.target.style.background = 
+	validarCI(ci) && ci.length == 10 ? '#2DAF5E55': 
+	ci.length >= 10 ? '#C9474755': 'transparent';
 });
 
 
+// Valida el numero de cedula con el digito verificador.
+function validarCI(number) {
 
+	if (number.length != 10) {return false}
 
-
-
-
-
-// Funcionamiento del contador.
-function funContador ( input ) {
-
-	// Actualiza el contador en pantalla.
-	contador.innerHTML = `${input.value.length} - 10`;
-
-	// Verifica si has ingresado mas de 10 digitos.
-	if ( input.value.length > 10 ) {
-		contador.style.color = `#B41212`; // Cambia el color del contador.
-		contador.innerHTML = `${input.value.length} - 10 !`;
-
-	}
-	else if ( input.value.length == 10 ) {
-		contador.style.color = `#1DAD42`;
-	}
-	else{ contador.style.color = `#333`; }
-}
-
-
-
-
-
-
-
-
-
-
-
-// Funcion de validacion del numero de cedula EC.
-function validarCI (ci) {
-
-	// Verifica si en un numero valido para ci.
-	if ( verificarSecuencia(ci) ) { return false }
-
-
-	let res = 0; // Variable de resultado.
-
-	// Bucle que hace el proceso del algoritmo 'modulo 10'.
-	for (let i = 0; i < ci.length; i++) {
-
-		// Obtiene cada digito en string y lo convierte en integer/int.
-		let digito = parseInt( ci[i] );
-
-		// Multiplica el coeficiente 2 a sus respectivos digitos.
-		if ( i % 2 == 0 && i < 9) { digito *= 2; } 
-		// Resta 9 al digito si el resultado de la multiplicaion fue mayor a 9 si no solo pasa.
-		if ( digito > 9 && i < 9) { digito -= 9; }
-		// Suma en la variable res el  resultado del proceso anterior.
-		if ( i < 9 ) { res += digito; } 
+	let suma = 0;
+	for (let i = 0; i < 9; i++) {
+		if (i%2) { suma += parseInt(number[i]) } else {
+			res = parseInt( number[i] ) * 2;
+			res > 9 ? suma += res - 9: suma += res;
+		}
 	}
 
-	// Guarda en res ( la decena superior del resultado de la suma - resultado de la suma ).
-	res = res - res - (res % 10) + 10;
+	decenaSuperior = ( parseInt( suma.toString()[0] ) + 1 ) * 10;
+	res = decenaSuperior - suma;
+	res == 10 ? res = 0 : null
 
-	// si res es 10, lo cambia a 0.
-	if ( res == 10 ) { res = 0; }
-	
-
-	// Comprueba si res es igual al digito verificador ( ultimo numero de cedula ).
-	// retorna true si es valido o falso si no es valido.
-	if ( res == ci[9] ) { return true; }
-	else { return false; }
-}
-
-
-
-// Verifica cuantas veces se repte un numero para que no haya un error en la validacion. 
-function verificarSecuencia( ci ) {
-
-	let cont = [0,0,0,0,0,0,0,0,0,0];
-
-	for (let i = 0; i < ci.length; i++) { cont[ci[i]]++; }
-
-	for (let n of cont) { 
-		if (n > 4) {return true}
-	}
+	return res == number[9] ? true: false;
 }
