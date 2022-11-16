@@ -1,6 +1,6 @@
 # Validar numero de cedula EC
 Formulario que verifica si tu cedula de identidad ecuatoriana es valida.
 
-* link: https://jesusbriones2.github.io/validar_numero_de_cedula_EC/
+* Link : https://jesusbriones2.github.io/validate_CI/
 
 ![Page capture](cap.png "Page capture")
