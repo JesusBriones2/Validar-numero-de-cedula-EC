@@ -1,33 +1,87 @@
-(() => {
+;(() => {
+  const $ = (selector, context = document) => context.querySelector(selector)
+  const $$ = (selector, context = document) =>
+    Array.from(context.querySelectorAll(selector))
 
-	document.querySelector('.form__input').addEventListener('input', (e) => {
+  // Control de tabs y secciones
+  const tabsElem = $('.tab__items')
+  const sectionsElem = $$('.tab__section')
+  const iconsElem = $('.tab__section--icons')
+  const inputCedula = $('#input-cedula')
+  const inputRuc = $('#input-ruc')
 
-		const ci = e.target.value;
+  function clearInputs() {
+    inputCedula.value = ''
+    inputRuc.value = ''
+  }
 
-		// Indica visualmente si la cédula ingresada es valida.
-		e.target.style.background = 
-		validateCI(ci) && ci.length == 10 ? '#31dc7355': 
-		ci.length >= 10 ? '#fc5e5e55': '#e1e1e1';
-	});
+  // Control de tabs y secciones
+  tabsElem.addEventListener('click', ({ target }) => {
+    const CLASS_NAME = 'active'
+    if (!target.classList.contains('tab__item')) return
+    const tabName = target.dataset.tab
 
+    tabsElem.querySelector(`.${CLASS_NAME}`).classList.remove(CLASS_NAME)
+    target.classList.add(CLASS_NAME)
 
-	// Valida el numero de cédula con el dígito verificador.
-	function validateCI(number) {
+    sectionsElem.forEach((sec) => {
+      sec.classList.remove(CLASS_NAME)
+      if (sec.dataset.sec === tabName) {
+        sec.classList.add(CLASS_NAME)
+      }
+    })
+  })
 
-		if (number.length != 10) {return false}
+  // Validaciones de cedula y ruc
 
-		let sum = 0, res;
-		for (let i = 0; i < 9; i++) {
-			if (i % 2) { sum += parseInt(number[i]) } else {
-				res = parseInt(number[i]) * 2;
-				res > 9 ? sum += res - 9 : sum += res;
-			}
-		}
+  // validación de numero de cedula
+  function validateCI(ci) {
+    const coefficient = [2, 1, 2, 1, 2, 1, 2, 1, 2]
+    let sumTotal = 0
 
-		decenaSuperior = (parseInt(sum.toString()[0]) + 1) * 10;
-		res = decenaSuperior - sum;
-		res == 10 ? res = 0 : null;
+    // Multiplicación de los coeficientes
+    for (let i = 0; i < 9; i++) {
+      const res = parseInt(ci[i]) * coefficient[i]
+      sumTotal += res >= 10 ? res - 9 : res
+    }
 
-		return res == number[9] ? true: false;
-	}
-})(); 
+    // Calculo de dígito verificador
+    let digit = 10 - (sumTotal % 10)
+    digit = digit === 10 ? 0 : digit
+
+    return digit === parseInt(ci[9]) ? true : false
+  }
+
+  function showValidationStatus(status) {
+    const iconsMap = {
+      load: 0,
+      success: 1,
+      error: 2,
+    }
+
+    iconsElem.querySelector('.show')?.classList.remove('show')
+    iconsElem.children[iconsMap[status]]?.classList.add('show')
+  }
+
+  inputCedula.addEventListener('input', ({ target }) => {
+    let ci = target.value ? target.value.slice(0, 10) : ''
+    target.value = ci
+
+    const isValid = validateCI(ci)
+    const CLASS_NAME = 'show'
+
+    showValidationStatus()
+    target.classList.remove('success', 'error')
+
+    if (ci.length > 0 && ci.length < 10) {
+      showValidationStatus('load')
+    }
+
+    if (ci.length === 10) {
+      showValidationStatus(isValid ? 'success' : 'error')
+      target.classList.add(isValid ? 'success' : 'error')
+    }
+  })
+
+  inputRuc.addEventListener('input', ({ target }) => {})
+})()

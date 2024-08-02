@@ -1,96 +1,177 @@
+:root {
+  --pale-blue: #e3eaf1;
+  --soft-gray: #a3b0b7;
+  --dark-charcoal: #262829;
+  --sky-blue: #bbd6fa;
+  --blue: #0058d0;
+  --bright-red: #ff0000;
+  --vivid-green: #04ad04;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 /* Quita las fechas en los inputs type number */
-.form input[type=number]::-webkit-inner-spin-button, 
-.form input[type=number]::-webkit-outer-spin-button { 
-  -webkit-appearance: none; 
-  margin: 0; 
+.form input[type='number']::-webkit-inner-spin-button,
+.form input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
 }
 
-body { overflow: hidden; }
+body {
+  font-family: monospace, sans-serif;
+  background-color: var(--pale-blue);
+  color: var(--dark-charcoal);
+}
 
+main {
+  width: min(800px, 90%);
+  margin: 0 auto;
+  padding: 40px 0;
+}
+
+/* Sección header */
+.header {
+  text-wrap: pretty;
+}
+
+.header__title {
+  font-size: 28px;
+}
+
+.header__paragraph {
+  margin-top: 10px;
+}
+
+/* Sección Tabs */
+.tab {
+  margin-top: 40px;
+}
+
+.tab__items {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--soft-gray);
+  padding-bottom: 5px;
+}
+
+.tab__item {
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.tab__item:hover {
+  color: var(--blue);
+}
+
+.tab__item.active {
+  background-color: var(--sky-blue);
+  color: var(--blue);
+}
+
+.tab__item.active:hover {
+  background-color: var(--sky-blue);
+}
+
+.tab__link {
+  color: var(--dark-charcoal);
+  font-size: 24px;
+  padding: 0 10px;
+}
+
+.tab__link:hover {
+  color: var(--blue);
+}
+
+.tab__section--icons {
+  font-size: 20px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tab__section--icons i {
+  display: none;
+}
+
+.tab__section--icons i.spin {
+  color: var(--blue);
+  animation: spin 1s infinite forwards linear;
+}
+
+.tab__section--icons i.show {
+  display: inline-block;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.tab__section {
+  flex-shrink: 0;
+  width: 100%;
+  display: none;
+  justify-content: center;
+}
+
+.tab__section.active {
+  display: flex;
+}
+
+/* Sección de formularios */
 .form {
-	margin: 100px auto 0;
-	padding: 40px;
-	width: 300px;
-	font-family: sans-serif;
-	color: #444;
-	font-weight: 600;
-	max-width: 100%;
-	box-shadow: 0 0 10px #0004;
-	border-radius: 10px;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	font-size: 1.1em;
+  border: 1px solid var(--soft-gray);
+  padding: 20px;
+  width: 100%;
+  border-radius: 5px;
+  background-color: var(--input-bg-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
 }
 
-.form__title {
-	width: 100%;
-	text-align: start;
-	word-spacing: 5px;
-	margin-bottom: 40px;
+.form__label {
+  font-weight: bold;
+  color: var(--text-color);
 }
 
 .form__input {
-	height: 40px;
-	border-radius: 5px;
-	font-size: inherit;
-	width: 100%;
-	min-width: 200px;
-	letter-spacing: 3px;
-	background-color: #e1e1e1;
-	padding: 0 10px;
-	border: none;
-	outline: none;
-	text-align: center;
+  width: 100%;
+  font-family: inherit;
+  background-color: var(--pale-blue);
+  border-radius: 5px;
+  border: 1px solid var(--soft-gray);
+  padding: 20px;
+  outline: none;
+  text-align: center;
+  font-size: inherit;
+  transition: border-color 0.3s;
 }
 
-
-@media screen and (max-width: 500px) {
-	.form {
-		padding-top: 100px;
-		box-shadow: none;
-	}
+.form__input:focus {
+  outline: 1px solid var(--soft-gray);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*body {
-	display: flex;
-	justify-content: center;
+.form__input:focus::placeholder {
+  color: transparent;
 }
 
-#canvas {
-	outline: 3px solid #000;
-	margin-top: 50px;
+.error {
+  color: var(--bright-red);
+  border-color: var(--bright-red);
+  outline-color: var(--bright-red);
 }
 
-
-#caja {
-	position: absolute;
-	bottom: 0;
-	font-family: tahoma;
-}*/
+.success {
+  color: var(--vivid-green);
+  border-color: var(--vivid-green);
+  outline-color: var(--vivid-green);
+}

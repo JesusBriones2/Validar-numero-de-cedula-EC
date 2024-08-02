@@ -1,18 +1,68 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Validar numero de cedula EC</title>
-	<link rel="stylesheet" href="main.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Verificación de Cédula y RUC - Ecuador</title>
+    <link rel="stylesheet" href="main.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <script defer type="module" src="script.js"></script>
+  </head>
+  <body>
+    <main>
+      <header class="header">
+        <h1 class="header__title">Verificación de Cédula y RUC Ecuatorianos</h1>
+        <p class="header__paragraph">
+          Verifica la validez de números de cédula de ciudadanía y RUC
+          ecuatoriano mediante métodos oficiales. La cédula se valida usando el
+          método de
+          <strong>Módulo 10</strong>, mientras que el RUC se valida con el
+          método de <strong>Módulo 11</strong>.
+        </p>
+      </header>
 
-	<div class="form">
-		<label class="form__title">VALIDAR CI</label>
-		<input type="number" class="form__input">
-	</div>
-
-	<script src="script.js"></script>
-</body>
+      <section class="tab">
+        <header class="tab__items">
+          <span class="tab__item active" data-tab="cedula">Cédula</span>
+          <span class="tab__item" data-tab="ruc">RUC</span>
+          <span>|</span>
+          <a href="#" class="tab__link">
+            <i class="fa-brands fa-github"></i>
+          </a>
+        </header>
+        <div>
+          <section class="tab__section--icons">
+            <i class="fa-solid fa-circle-notch spin"></i>
+            <i class="fa-solid fa-circle-check success"></i>
+            <i class="fa-solid fa-circle-xmark error"></i>
+          </section>
+          <section class="tab__section active" data-sec="cedula">
+            <form class="form">
+              <label class="form__label">Validar numero de cédula</label>
+              <input
+                type="number"
+                id="input-cedula"
+                class="form__input"
+                placeholder="Ingresar cédula aquí"
+              />
+            </form>
+          </section>
+          <section class="tab__section" data-sec="ruc">
+            <form class="form">
+              <label class="form__label">Validar RUC</label>
+              <input
+                type="number"
+                id="input-ruc"
+                class="form__input"
+                placeholder="Ingresar RUC aquí"
+              />
+            </form>
+          </section>
+        </div>
+      </section>
+    </main>
+  </body>
 </html>
