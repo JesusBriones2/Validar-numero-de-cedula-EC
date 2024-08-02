@@ -6,7 +6,7 @@ Este proyecto implementa algoritmos para la validación de la cédula de ciudada
 
 [Accede a la herramienta](https://lbrionez.github.io/validate-ci-ruc/).
 
-![screenshot of the page](picture.png "screenshot")
+![screenshot of the page](public/picture.png "screenshot")
 
 ## Validación de la Cédula de Ciudadanía
 
