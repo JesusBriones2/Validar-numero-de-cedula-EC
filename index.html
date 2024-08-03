@@ -14,7 +14,7 @@
     <script defer type="module" src="public/js/main.js"></script>
   </head>
   <body>
-    <main class="container">
+    <main class="main container">
       <header class="header">
         <h1 class="header__title">
           Verifica números de cédula y RUC válidos del Ecuador
@@ -32,24 +32,22 @@
         <ul class="tabs__list">
           <li class="tabs__item active" data-tab="cedula">Cédula</li>
           <li class="tabs__item" data-tab="ruc">RUC</li>
-          <span>|</span>
-          <div class="links">
+          <hr class="tabs__divider"/>
+          <li class="tabs__item-link">
             <a
-              class="links__item"
+              class="fa-solid fa-file-lines"
               href="public/doc/doc.html"
               title="Leer proceso"
-            >
-              <i class="fa-solid fa-file-lines"></i>
-            </a>
+            ></a>
+          </li>
+          <li class="tabs__item-link">
             <a
-              class="links__item"
+              class="fa-brands fa-github"
               href="https://github.com/lbrionez/validate-ci-ruc"
               target="_blank"
               title="Repositorio - lbrionez"
-            >
-              <i class="fa-brands fa-github"></i>
-            </a>
-          </div>
+            ></a>
+          </li>
         </ul>
 
         <section class="validations">

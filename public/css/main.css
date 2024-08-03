@@ -2,21 +2,42 @@
 @import url('./../fonts/fonts.css');
 
 :root {
-  --charcoal: #333438;
-  --soft-gray: #bdcbd2;
+  --gray: #666666;
+  --soft-gray: #b3b3b3;
   --sky-blue: #ddeafa;
   --blue: #118cef;
   --bright-red: #ff0000;
   --vivid-green: #04ad04;
+  --border: 1px solid var(--soft-gray);
+
+  --text-xs: 0.75rem; /* 12px */
+  --text-sm: 0.875rem; /* 14px */
+  --text-base: 1rem; /* 16px */
+  --text-lg: 1.125rem; /* 18px */
+  --text-xl: 1.25rem; /* 20px */
+  --text-2xl: 1.5rem; /* 24px */
+  --text-3xl: 1.875rem; /* 30px */
+
+  --font-system-ui: system-ui, sans-serif;
+  --font-menlo: 'Menlo', monospace, sans-serif;
 }
 
 body {
-  font-family: 'Menlo', monospace, sans-serif;
-  color: var(--charcoal);
+  font-family: var(--font-menlo);
+  color: var(--gray);
+  font-size: var(--text-sm);
+  line-height: 1.5;
+}
+
+h1,
+h2,
+h3 {
+  color: #000;
+  font-family: var(--font-system-ui);
+  font-weight: 700;
 }
 
 .container {
   width: min(800px, 90%);
-  margin: 0 auto;
-  padding: 40px 0;
+  margin: 40px auto;
 }

@@ -1,3 +1,6 @@
+.main {
+  margin-bottom: 100px;
+}
 
 /* Sección header */
 .header {
@@ -5,8 +8,7 @@
 }
 
 .header__title {
-  font-size: 28px;
-  font-weight: bold;
+  font-size: var(--text-3xl);
 }
 
 .header__paragraph {
@@ -19,28 +21,39 @@
 }
 
 .tabs__list {
+  color: #000;
   user-select: none;
-  list-style: none;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid var(--soft-gray);
-  padding-bottom: 3px;
+  gap: 5px;
 }
 
-.tabs__item {
-  padding: 10px 20px;
+.tabs__item,
+.tabs__item-link {
+  padding: 5px 20px;
   border-radius: 5px;
   cursor: pointer;
   font-weight: bold;
 }
 
-.tabs__item:hover {
+.tabs__item-link {
+  padding: 2px 10px;
+  font-size: var(--text-lg);
+}
+
+.tabs__item:hover,
+.tabs__item.active,
+.tabs__item-link:hover {
+  background-color: var(--sky-blue);
   color: var(--blue);
 }
 
-.tabs__item.active {
-  background-color: var(--sky-blue);
-  color: var(--blue);
+.tabs__divider {
+  border: none;
+  border-left: 1px solid;
+  width: 1px;
+  height: 20px;
+  border-color: var(--soft-gray);
 }
 
 /* Sección links */
@@ -52,7 +65,6 @@
 
 .links__item {
   color: var(--dark-charcoal);
-  font-size: 24px;
   text-decoration: none;
 }
 
@@ -70,7 +82,7 @@
 }
 
 .validations span {
-  font-size: 16px;
+  font-size: var(--text-sm);
   margin-right: 10px;
 }
 
@@ -104,7 +116,7 @@
 
 /* Sección formularios */
 .form {
-  border: 1px solid var(--soft-gray);
+  border: var(--border);
   padding: 20px;
   border-radius: 5px;
 }
@@ -113,6 +125,9 @@
   display: block;
   font-weight: bold;
   text-align: center;
+  font-family: var(--font-system-ui);
+  font-size: var(--text-base);
+  color: #000;
 }
 
 .form__input {
@@ -128,7 +143,7 @@
 }
 
 .form__input:focus {
-  outline: 1px solid var(--soft-gray);
+  outline: var(--border);
 }
 
 .form__input:focus::placeholder {
