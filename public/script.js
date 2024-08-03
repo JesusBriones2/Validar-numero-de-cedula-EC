@@ -60,6 +60,11 @@
     return digit === parseInt(ci[9]) ? true : false
   }
 
+  // Validación de RUC
+  function validateRUC(ruc) {
+
+  }
+
   // Muestra el icono según el estado de la validación
   function statusValidationIcon(status) {
     const iconsMap = {
@@ -99,5 +104,7 @@
   })
 
   // Evento de validación de RUC
-  inputRUC.addEventListener('input', ({ target }) => {})
+  inputRUC.addEventListener('input', ({ target }) => {
+    
+  })
 })()

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Proceso de Validación</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      .content {
+        max-width: 800px;
+        margin: auto;
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="content" id="markdown-content"></div>
+    <button onclick="goBack()">Volver Atrás</button>
+
+    <!-- Carga de la librería marked -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Verifica si la librería está cargada
+        if (typeof marked === 'undefined') {
+          console.error('La librería marked no se ha cargado correctamente.');
+          return;
+        }
+
+        // Función para cargar y convertir Markdown a HTML
+        fetch('doc.md')
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Error al cargar el archivo Markdown: ' + response.statusText);
+            }
+            return response.text();
+          })
+          .then(markdown => {
+            // Usa la función parse si la versión de marked lo requiere
+            const htmlContent = marked.parse ? marked.parse(markdown) : marked(markdown);
+            document.getElementById('markdown-content').innerHTML = htmlContent;
+          })
+          .catch(error => console.error(error));
+      });
+
+      // Función para volver atrás en el historial
+      function goBack() {
+        window.history.back();
+      }
+    </script>
+  </body>
+</html>

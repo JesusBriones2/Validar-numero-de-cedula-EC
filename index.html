@@ -4,8 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Verificación de Cédula y RUC - Ecuador</title>
-    <link rel="shortcut icon" href="public/favicon.svg" type="image/x-icon">
+    <link rel="shortcut icon" href="public/favicon.svg" type="image/x-icon" />
     <link rel="stylesheet" href="public/main.css" />
+    <link rel="stylesheet" href="public/fonts/fonts.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -15,13 +16,15 @@
   <body>
     <main>
       <header class="header">
-        <h1 class="header__title">Verificación de Cédula y RUC Ecuatorianos</h1>
+        <h1 class="header__title">
+          Verifica números de cédula y RUC válidos del Ecuador
+        </h1>
         <p class="header__paragraph">
           Verifica la validez de números de cédula de ciudadanía y RUC
-          ecuatoriano mediante métodos oficiales. La cédula se valida usando el
-          método de
-          <strong>Módulo 10</strong>, mientras que el RUC se valida con el
-          método de <strong>Módulo 11</strong>.
+          ecuatorianos utilizando métodos oficiales. La cédula se valida
+          aplicando el <strong>Módulo 10</strong>, mientras que el RUC se
+          verifica mediante el <strong>Módulo 11</strong>. Ambos métodos
+          aseguran la autenticidad de estos números de identificación.
         </p>
       </header>
 
@@ -30,7 +33,19 @@
           <span class="tab__item active" data-tab="cedula">Cédula</span>
           <span class="tab__item" data-tab="ruc">RUC</span>
           <span>|</span>
-          <a href="https://github.com/lbrionez/validate-ci-ruc" class="tab__link">
+          <a
+            href="public/doc/validacion-doc.html"
+            class="tab__link"
+            title="Leer proceso"
+          >
+            <i class="fa-solid fa-file-lines"></i>
+          </a>
+          <a
+            href="https://github.com/lbrionez/validate-ci-ruc"
+            class="tab__link"
+            target="_blank"
+            title="Repositorio"
+          >
             <i class="fa-brands fa-github"></i>
           </a>
         </header>

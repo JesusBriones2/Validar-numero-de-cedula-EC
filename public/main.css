@@ -1,9 +1,8 @@
 :root {
-  --pale-blue: #e3eaf1;
-  --soft-gray: #a3b0b7;
-  --dark-charcoal: #262829;
-  --sky-blue: #bbd6fa;
-  --blue: #0058d0;
+  --charcoal: #333438;
+  --soft-gray: #bdcbd2;
+  --sky-blue: #DDEAFA;
+  --blue: #118CEF;
   --bright-red: #ff0000;
   --vivid-green: #04ad04;
 }
@@ -21,9 +20,8 @@
 }
 
 body {
-  font-family: monospace, sans-serif;
-  background-color: var(--pale-blue);
-  color: var(--dark-charcoal);
+  font-family: 'Menlo', monospace, sans-serif;
+  color: var(--charcoal);
 }
 
 main {
@@ -54,7 +52,7 @@ main {
   display: flex;
   align-items: center;
   border-bottom: 1px solid var(--soft-gray);
-  padding-bottom: 5px;
+  padding-bottom: 3px;
 }
 
 .tab__item {
@@ -62,6 +60,7 @@ main {
   border-radius: 5px;
   cursor: pointer;
   font-weight: bold;
+  user-select: none;
 }
 
 .tab__item:hover {
@@ -88,10 +87,11 @@ main {
 }
 
 .tab__section--icons {
+  padding: 0 20px;
   font-size: 20px;
   height: 40px;
   display: flex;
-  justify-content: center;
+  justify-content: end;
   align-items: center;
 }
 
