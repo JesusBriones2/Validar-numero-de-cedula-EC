@@ -1,5 +1,5 @@
-@import url('/public/css/base.css');
-@import url('/public/fonts/fonts.css');
+@import url('./base.css');
+@import url('./fonts.css');
 
 :root {
   --charcoal: #333438;
