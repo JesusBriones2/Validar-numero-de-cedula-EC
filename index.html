@@ -4,17 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Verificación de Cédula y RUC - Ecuador</title>
-    <link rel="shortcut icon" href="public/favicon.svg" type="image/x-icon" />
-    <link rel="stylesheet" href="public/main.css" />
-    <link rel="stylesheet" href="public/fonts/fonts.css" />
+    <link rel="shortcut icon" href="/public/favicon.svg" type="image/x-icon" />
+    <link rel="stylesheet" href="/public/css/main.css">
+    <link rel="stylesheet" href="/public/css/home.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-    <script defer type="module" src="public/script.js"></script>
+    <script defer type="module" src="/public/js/main.js"></script>
   </head>
   <body>
-    <main>
+    <main class="container">
       <header class="header">
         <h1 class="header__title">
           Verifica números de cédula y RUC válidos del Ecuador
@@ -23,62 +23,66 @@
           Verifica la validez de números de cédula de ciudadanía y RUC
           ecuatorianos utilizando métodos oficiales. La cédula se valida
           aplicando el <strong>Módulo 10</strong>, mientras que el RUC se
-          verifica mediante el <strong>Módulo 11</strong>. Ambos métodos
-          aseguran la autenticidad de estos números de identificación.
+          verifica mediante el <strong>Módulo 11</strong>. Ambos son algoritmos
+          que aseguran la autenticidad de estos números de identificación.
         </p>
       </header>
 
-      <section class="tab">
-        <header class="tab__items">
-          <span class="tab__item active" data-tab="cedula">Cédula</span>
-          <span class="tab__item" data-tab="ruc">RUC</span>
+      <div class="tabs">
+        <ul class="tabs__list">
+          <li class="tabs__item active" data-tab="cedula">Cédula</li>
+          <li class="tabs__item" data-tab="ruc">RUC</li>
           <span>|</span>
-          <a
-            href="public/doc/validacion-doc.html"
-            class="tab__link"
-            title="Leer proceso"
-          >
-            <i class="fa-solid fa-file-lines"></i>
-          </a>
-          <a
-            href="https://github.com/lbrionez/validate-ci-ruc"
-            class="tab__link"
-            target="_blank"
-            title="Repositorio"
-          >
-            <i class="fa-brands fa-github"></i>
-          </a>
-        </header>
-        <div>
-          <section class="tab__section--icons">
-            <i class="fa-solid fa-circle-notch spin"></i>
-            <i class="fa-solid fa-circle-check success"></i>
-            <i class="fa-solid fa-circle-xmark error"></i>
-          </section>
-          <section class="tab__section active" data-sec="cedula">
-            <form class="form">
-              <label class="form__label">Validar numero de cédula</label>
-              <input
-                type="number"
-                id="input-cedula"
-                class="form__input"
-                placeholder="Ingresar cédula aquí"
-              />
-            </form>
-          </section>
-          <section class="tab__section" data-sec="ruc">
-            <form class="form">
-              <label class="form__label">Validar RUC</label>
-              <input
-                type="number"
-                id="input-ruc"
-                class="form__input"
-                placeholder="Ingresar RUC aquí"
-              />
-            </form>
-          </section>
-        </div>
-      </section>
+          <div class="links">
+            <a
+              class="links__item"
+              href="/public/doc/doc.html"
+              title="Leer proceso"
+            >
+              <i class="fa-solid fa-file-lines"></i>
+            </a>
+            <a
+              class="links__item"
+              href="https://github.com/lbrionez/validate-ci-ruc"
+              target="_blank"
+              title="Repositorio - lbrionez"
+            >
+              <i class="fa-brands fa-github"></i>
+            </a>
+          </div>
+        </ul>
+
+        <section class="validations">
+          <span></span>
+          <i class="fa-solid fa-circle-notch spin"></i>
+          <i class="fa-solid fa-circle-check success"></i>
+          <i class="fa-solid fa-circle-xmark error"></i>
+        </section>
+
+        <section class="tabs__section active" data-tabsec="cedula">
+          <form class="form">
+            <label class="form__label">Validar numero de cédula</label>
+            <input
+              type="number"
+              id="input_cedula"
+              class="form__input"
+              placeholder="Ingresar cédula aquí"
+            />
+          </form>
+        </section>
+
+        <section class="tabs__section" data-tabsec="ruc">
+          <form class="form">
+            <label class="form__label">Validar RUC</label>
+            <input
+              type="number"
+              id="input_ruc"
+              class="form__input"
+              placeholder="Ingresar RUC aquí"
+            />
+          </form>
+        </section>
+      </div>
     </main>
   </body>
 </html>

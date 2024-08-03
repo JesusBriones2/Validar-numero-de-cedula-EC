@@ -1,8 +1,8 @@
-# Proceso de Validación
+# Proceso de Validación de Cedula y RUC del ecuador
 
 ## Números de Cédulas
 
-Dado el número de cédula: `1710034065`
+Dado el número de cédula: `sdasd`
 
 - Será exactamente una cadena de 10 dígitos numéricos.
 - El último dígito de la cadena será el dígito verificador (5 para el número de cédula dado).
@@ -151,7 +151,3 @@ Es un RUC válido.
 Caso contrario, al número 11 se le resta el resultado de la aplicación del módulo. (No se aplica para este caso, ya que el resultado anterior fue 0)
 
 Este resultado es comparado con el dígito verificador; en el caso de ser iguales, se asume que el RUC es válido; caso contrario, el RUC es inválido.
-
----
-
-[Volver atrás](#)

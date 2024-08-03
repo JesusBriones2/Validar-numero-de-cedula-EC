@@ -1,0 +1,104 @@
+.header a {
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 18px;
+  color: var(--charcoal);
+}
+
+.header a:hover {
+  color: var(--blue);
+  text-decoration: none;
+}
+
+#content {
+  margin-bottom: 100px;
+}
+
+h1, h2, h3, p {
+  text-wrap: pretty;
+}
+
+
+h1 {
+  font-size: 28px;
+  font-weight: bold;
+  border-bottom: 2px solid var(--soft-gray);
+  padding-bottom: 10px;
+}
+
+h2 {
+  font-size: 24px;
+  margin-top: 40px;
+  font-weight: bold;
+}
+
+h3 {
+  font-size: 1.5em;
+  margin-top: 15px;
+}
+
+/* Code blocks */
+pre {
+  background: #f5f5f5;
+  border-left: 3px solid #333;
+  padding: 10px;
+  overflow-x: auto;
+  border-radius: 4px;
+}
+
+code {
+  background: #f5f5f5;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+/* Lists */
+ul, ol {
+  margin-left: 20px;
+  list-style: circle;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+table, th, td {
+  border: 1px solid #ddd;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  background-color: #f4f4f4;
+}
+
+/* Links */
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Blockquotes */
+blockquote {
+  border-left: 4px solid #007bff;
+  padding: 10px 20px;
+  margin: 10px 0;
+  background: #f9f9f9;
+  font-style: italic;
+}

@@ -1,0 +1,22 @@
+@import url('/public/css/base.css');
+@import url('/public/fonts/fonts.css');
+
+:root {
+  --charcoal: #333438;
+  --soft-gray: #bdcbd2;
+  --sky-blue: #ddeafa;
+  --blue: #118cef;
+  --bright-red: #ff0000;
+  --vivid-green: #04ad04;
+}
+
+body {
+  font-family: 'Menlo', monospace, sans-serif;
+  color: var(--charcoal);
+}
+
+.container {
+  width: min(800px, 90%);
+  margin: 0 auto;
+  padding: 40px 0;
+}
