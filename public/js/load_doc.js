@@ -7,5 +7,6 @@ fetch('./../doc/doc.md')
   })
   .then((content) => {
     document.getElementById('content').innerHTML = marked.parse(content)
+    hljs.highlightAll()
   })
   .catch((error) => console.error('Error en la petición'))

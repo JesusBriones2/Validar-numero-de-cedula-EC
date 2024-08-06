@@ -1,0 +1,65 @@
+:root {
+  /* Colors */
+  --dark-gray: #494949;
+  --light-gray: #b3b3b3;
+  --light-blue: #edf5ff;
+  --medium-blue: #1090f8;
+  --red: #ff0000;
+  --green: #04ad04;
+
+  /* Text Sizes */
+  --text-xs: 0.75rem; /* 12px */
+  --text-sm: 0.875rem; /* 14px */
+  --text-base: 1rem; /* 16px */
+  --text-lg: 1.125rem; /* 18px */
+  --text-xl: 1.25rem; /* 20px */
+  --text-2xl: 1.5rem; /* 24px */
+  --text-3xl: 1.875rem; /* 30px */
+
+  /* Styles */
+  --font-menlo: 'Menlo', monospace, sans-serif;
+  --font-system-ui: system-ui, sans-serif;
+  --border: 1px solid var(--light-gray);
+  --color-title: #000;
+  --radius: 10px;
+}
+
+body {
+  font-family: var(--font-menlo);
+  color: var(--dark-gray);
+  font-size: var(--text-base);
+  line-height: 1.5;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-system-ui);
+  font-weight: 700;
+  color: var(--color-title);
+}
+
+.container {
+  width: min(800px, 90%);
+  margin: 0 auto;
+}
+
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+
+
+.footer {
+  text-align: center;
+}
+
+.footer a {
+  color: #000;
+  text-decoration: underline;
+}
+
+.footer a:hover {
+  color: var(--medium-blue);
+}

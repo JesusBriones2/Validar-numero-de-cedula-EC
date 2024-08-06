@@ -1,30 +1,66 @@
 <!DOCTYPE html>
 <html lang="es">
   <head>
+    <!-- Metadata -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Valida cédulas de ciudadanía y RUC en Ecuador usando métodos oficiales como el Módulo 10 y Módulo 11."
+    />
+    <meta name="author" content="@lbrionez en github" />
+    <meta
+      name="keywords"
+      content="verificación cédula, RUC, Ecuador, Módulo 10, Módulo 11"
+    />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta
+      property="og:title"
+      content="Verificación de Cédula y RUC - Ecuador"
+    />
+    <meta
+      property="og:description"
+      content="Valida cédulas de ciudadanía y RUC en Ecuador usando métodos oficiales como el Módulo 10 y Módulo 11."
+    />
+    <meta property="og:image" content="public/img/picture.png" />
+    <meta
+      property="og:url"
+      content="https://lbrionez.github.io/validate-ci-ruc/"
+    />
+    <meta property="og:type" content="tool" />
+
+    <!-- Title and favicon -->
     <title>Verificación de Cédula y RUC - Ecuador</title>
     <link rel="shortcut icon" href="public/favicon.svg" type="image/x-icon" />
-    <link rel="stylesheet" href="public/css/main.css" />
-    <link rel="stylesheet" href="public/css/home.css" />
+
+    <!-- Load FontAwesome icons -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
+
+    <!-- Links to CSS and JS resources -->
+    <link rel="stylesheet" href="public/css/base.css" />
+    <link rel="stylesheet" href="public/fonts/fonts.css" />
+    <link rel="stylesheet" href="public/css/global.css" />
+    <link rel="stylesheet" href="public/css/home.css" />
+
     <script defer type="module" src="public/js/main.js"></script>
   </head>
   <body>
     <main class="main container">
       <header class="header">
         <h1 class="header__title">
-          Verifica números de cédula y RUC válidos del Ecuador
+          Verifica números de cédula y RUC válidos en Ecuador
         </h1>
         <p class="header__paragraph">
-          Verifica la validez de números de cédula de ciudadanía y RUC
-          ecuatorianos utilizando métodos oficiales. La cédula se valida
-          aplicando el <strong>Módulo 10</strong>, mientras que el RUC se
-          verifica mediante el <strong>Módulo 11</strong>. Ambos son algoritmos
-          que aseguran la autenticidad de estos números de identificación.
+          Valida la autenticidad de números de cédula de ciudadanía y RUC
+          ecuatorianos mediante el uso de métodos oficiales. La cédula de
+          ciudadanía se valida aplicando el <strong>Módulo 10</strong>, mientras
+          que el RUC se verifica utilizando el <strong>Módulo 11</strong>. Estos
+          algoritmos garantizan la exactitud y validez de los números de
+          identificación.
         </p>
       </header>
 
@@ -32,15 +68,15 @@
         <ul class="tabs__list">
           <li class="tabs__item active" data-tab="cedula">Cédula</li>
           <li class="tabs__item" data-tab="ruc">RUC</li>
-          <hr class="tabs__divider"/>
-          <li class="tabs__item-link">
+          <hr class="tabs__divider" />
+          <li class="tabs__link">
             <a
               class="fa-solid fa-file-lines"
               href="public/doc/doc.html"
               title="Leer proceso"
             ></a>
           </li>
-          <li class="tabs__item-link">
+          <li class="tabs__link">
             <a
               class="fa-brands fa-github"
               href="https://github.com/lbrionez/validate-ci-ruc"
@@ -82,5 +118,22 @@
         </section>
       </div>
     </main>
+
+    <!-- Footer Section -->
+    <footer class="footer container">
+      <p class="footer__text">
+        Creado por
+        <a href="#" rel="noopener noreferrer">lbrionez</a>.
+      </p>
+      <p class="footer__text">
+        Basado en el proyecto de
+        <a
+          href="https://github.com/bymoxb"
+          target="_blank"
+          rel="noopener noreferrer"
+          >@bymoxb</a
+        >.
+      </p>
+    </footer>
   </body>
 </html>
