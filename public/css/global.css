@@ -53,6 +53,12 @@ h3 {
 
 .footer {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.footer__text {
+  margin: 0;
 }
 
 .footer a {

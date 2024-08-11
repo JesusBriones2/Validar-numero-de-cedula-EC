@@ -3,7 +3,7 @@
 </h1>
 
 <p align="center">
-  <a href="https://lbrionez.github.io/validate-ci-ruc/" target="_blank">Accede a la herramienta</a>
+  <a href="https://ciruc.brionex.xyz/">Accede a la herramienta</a>
 </p>
 
 <p align="center">

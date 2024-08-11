@@ -55,8 +55,8 @@
 .tabs__item:hover,
 .tabs__item.active,
 .tabs__link:hover {
-  background-color: var(--light-blue);
   color: var(--medium-blue);
+  border-color: var(--medium-blue);
 }
 
 .tabs__list .tabs__divider {

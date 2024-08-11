@@ -31,6 +31,12 @@ main {
   color: var(--medium-blue);
 }
 
+h1 {
+  position: sticky;
+  background-color: #fff;
+  top: 75px;
+}
+
 #content {
   margin-bottom: 100px;
 }
