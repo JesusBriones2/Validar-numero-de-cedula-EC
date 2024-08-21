@@ -1,83 +1,46 @@
 import { validateEcuadorianID, validateRUC } from './validations.js'
 
-// Utility function for selecting DOM elements
-const $ = (selector, context = document) => context.querySelector(selector)
-const $$ = (selector, context = document) =>
-  Array.from(context.querySelectorAll(selector))
+const tabsCont = document.querySelector('.tabs')
+const formsCont = document.querySelector('.tabs__forms')
+const tabsItems = tabsCont.querySelectorAll('.tabs__list li')
+const forms = formsCont.querySelectorAll('form')
+const valElem = document.querySelector('.tabs__val')
 
-// DOM Elements
-const tabList = $('.tabs__list')
-const tabSections = $$('.tabs__section')
-const validationIcons = $('.validations').children
-const cedulaInput = $('#input_cedula')
-const rucInput = $('#input_ruc')
-const forms = $$('form')
+// Tabs switches
+tabsCont.addEventListener('click', ({ target }) => {
+  if (target.tagName !== 'LI') return
+  const tabId = target.dataset.tab
 
-// Prevent default form submission behavior
-forms.forEach((form) =>
-  form.addEventListener('submit', (e) => e.preventDefault())
-)
+  tabsItems.forEach((tab) =>
+    tab.classList.toggle('active', tab.dataset.tab === tabId)
+  )
+  forms.forEach((sec) =>
+    sec.classList.toggle('show', sec.dataset.form === tabId)
+  )
 
-// Control tab switching
-let activeTab = tabList.querySelector('.active')
-tabList.addEventListener('click', ({ target }) => {
-  if (!target.classList.contains('tabs__item')) return
-
-  const ACTIVE_CLASS = 'active'
-  const tabName = target.dataset.tab
-
-  if (tabName === activeTab.dataset.tab) return
-
-  activeTab.classList.remove(ACTIVE_CLASS)
-  target.classList.add(ACTIVE_CLASS)
-
-  tabSections.forEach((section) => {
-    section.classList.toggle(ACTIVE_CLASS, section.dataset.tabsec === tabName)
-  })
-
-  activeTab = target
+  target.classList.add('active')
   clearInputs()
 })
 
 // Clear input fields and reset validation statuses
 function clearInputs() {
-  cedulaInput.value = ''
-  rucInput.value = ''
-  updateValidationIcon()
-  updateInputValidation(cedulaInput)
-  updateInputValidation(rucInput)
+  toggleValIcons()
+  forms.forEach((form) => {
+    // updateInputValidation(form[0])
+    form[0].value = ''
+  })
 }
 
-// Update validation icon and status message
-const statuses = ['success', 'error']
-let activeIcon = null
+// Toggle validation icon and status message
+function toggleValIcons(status, message) {
+  valElem.classList.remove('success', 'error', 'load')
+  valElem.firstChild.textContent = ''
 
-/**
- * Updates the validation icon and status message.
- * @param {string} [status] - The validation status ('load', 'success', or 'error').
- * @param {string} [message] - The status message to display.
- */
-function updateValidationIcon(status, message) {
-  const iconMap = { load: 1, success: 2, error: 3 }
-
-  if (activeIcon) activeIcon.classList.remove('show')
-  activeIcon = status ? validationIcons[iconMap[status]] : null
-  validationIcons[0].classList.remove(...statuses)
-
-  if (statuses.includes(status)) {
-    validationIcons[0].classList.add(status)
-  }
-
-  validationIcons[0].textContent = message ?? ''
-  if (activeIcon) activeIcon.classList.add('show')
+  if (status) valElem.classList.add(status)
+  if (message) valElem.firstChild.textContent = message
 }
 
 // Update input field validation status
-/**
- * Updates the validation status of an input field.
- * @param {HTMLInputElement} input - The input field to update.
- * @param {boolean|null} [isValid] - The validation result (true or false). If null, only the existing classes are removed.
- */
 function updateInputValidation(input, isValid = null) {
   input.classList.remove(...statuses)
   if (isValid !== null) {
@@ -85,46 +48,33 @@ function updateInputValidation(input, isValid = null) {
   }
 }
 
-// Cedula validation event
-cedulaInput.addEventListener('input', ({ target }) => {
-  const cedula = target.value.slice(0, 10)
-  target.value = cedula
+// Inputs events
+formsCont.addEventListener('input', ({ target }) => {
+  const value =
+    target.id === 'input-cedula'
+      ? target.value.slice(0, 10)
+      : target.id === 'input-ruc'
+      ? target.value.slice(0, 13)
+      : ''
 
-  updateValidationIcon()
-  updateInputValidation(target)
+  target.value = value
+  toggleValIcons()
 
-  if (cedula.length > 0) {
-    updateValidationIcon('load', '...')
-  }
+  if (value.length > 0) toggleValIcons('load', '...')
 
-  if (cedula.length === 10) {
-    const isValid = validateEcuadorianID(cedula)
-    updateValidationIcon(
+  if (value.length === 10) {
+    const isValid = validateEcuadorianID(value)
+    toggleValIcons(
       isValid ? 'success' : 'error',
       isValid ? 'Cédula válida' : 'Cédula no válida'
     )
-    updateInputValidation(target, isValid)
-  }
-})
-
-// RUC validation event
-rucInput.addEventListener('input', ({ target }) => {
-  const ruc = target.value.slice(0, 13)
-  target.value = ruc
-
-  updateValidationIcon()
-  updateInputValidation(target)
-
-  if (ruc.length > 0) {
-    updateValidationIcon('load', '...')
   }
 
-  if (ruc.length === 13) {
-    const res = validateRUC(ruc)
-    updateValidationIcon(
+  if (value.length === 13) {
+    const res = validateRUC(value)
+    toggleValIcons(
       res.isValid ? 'success' : 'error',
       res.isValid ? `${res.type} válido` : 'RUC no válido'
     )
-    updateInputValidation(target, res.isValid)
   }
 })

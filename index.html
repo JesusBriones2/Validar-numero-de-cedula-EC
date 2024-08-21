@@ -24,10 +24,7 @@
       content="Valida cédulas de ciudadanía y RUC en Ecuador usando métodos oficiales como el Módulo 10 y Módulo 11."
     />
     <meta property="og:image" content="public/img/picture.png" />
-    <meta
-      property="og:url"
-      content="https://brionex.github.io/validate-ci-ruc/"
-    />
+    <meta property="og:url" content="https://github.com/brionex/ciruc" />
     <meta property="og:type" content="tool" />
 
     <!-- Title and favicon -->
@@ -50,11 +47,9 @@
   </head>
   <body>
     <main class="main container">
-      <header class="header">
-        <h1 class="header__title">
-          Verificación de Números de Cédula y RUC en Ecuador
-        </h1>
-        <p class="header__paragraph">
+      <header>
+        <h1>Verificación de Números de Cédula y RUC en Ecuador</h1>
+        <p>
           Valida la autenticidad de los números de cédula de ciudadanía y RUC
           ecuatorianos utilizando métodos oficiales. La cédula de ciudadanía se
           verifica mediante el algoritmo del Módulo 10, mientras que el RUC se
@@ -63,81 +58,75 @@
         </p>
       </header>
 
-      <div class="tabs">
-        <ul class="tabs__list">
-          <li class="tabs__item active" data-tab="cedula">Cédula</li>
-          <li class="tabs__item" data-tab="ruc">RUC</li>
-          <hr class="tabs__divider" />
-          <li class="tabs__link">
+      <div class="tabs" data-tab-active="cedula">
+        <div>
+          <ul class="tabs__list">
+            <li class="active" data-tab="cedula">Cédula</li>
+            <li data-tab="ruc">RUC</li>
+            <hr />
             <a
               class="fa-solid fa-file-lines"
               href="public/doc/doc.html"
               title="Leer proceso"
             ></a>
-          </li>
-          <li class="tabs__link">
             <a
               class="fa-brands fa-github"
-              href="https://github.com/brionex/validate-ci-ruc"
+              href="https://github.com/brionex/ciruc"
               target="_blank"
               title="Repositorio - brionex"
             ></a>
-          </li>
-        </ul>
+          </ul>
 
-        <section class="validations">
-          <span></span>
-          <i class="fa-solid fa-circle-notch spin"></i>
-          <i class="fa-solid fa-circle-check success"></i>
-          <i class="fa-solid fa-circle-xmark error"></i>
-        </section>
+          <div class="tabs__val">
+            <span></span>
+            <i class="fa-solid fa-circle-notch spin load"></i>
+            <i class="fa-solid fa-circle-check success"></i>
+            <i class="fa-solid fa-circle-xmark error"></i>
+          </div>
+        </div>
 
-        <section class="tabs__section active" data-tabsec="cedula">
-          <form class="form">
-            <label class="form__label">Validar numero de cédula</label>
+        <section class="tabs__forms">
+          <form class="show" data-form="cedula">
+            <h3>Validar numero de cédula</h3>
             <input
               type="number"
-              id="input_cedula"
-              class="form__input"
+              id="input-cedula"
               placeholder="Ingresar cédula aquí"
             />
           </form>
-        </section>
 
-        <section class="tabs__section" data-tabsec="ruc">
-          <form class="form">
-            <label class="form__label">Validar RUC</label>
+          <form data-form="ruc">
+            <h3>Validar RUC</h3>
             <input
               type="number"
-              id="input_ruc"
-              class="form__input"
+              id="input-ruc"
               placeholder="Ingresar RUC aquí"
             />
           </form>
         </section>
       </div>
-    </main>
 
-    <!-- Footer Section -->
-    <footer class="footer container">
-      <p class="footer__text">
-        Creado por
-        <a
-          href="https://www.brionex.xyz"
-          target="_blank"
-          rel="noopener noreferrer"
-          >brionex</a
-        >.
-      </p>
-      <p class="footer__text">
-        Basado en el proyecto de
-        <a
-          href="https://github.com/bymoxb"
-          target="_blank"
-          rel="noopener noreferrer"
-          >@bymoxb</a
-        >.
-      </p>
-    </footer>
+      <!-- Footer Section -->
+      <footer>
+        <p>
+          Creado por
+          <a
+            href="https://brionex.xyz"
+            target="_blank"
+            rel="noopener noreferrer"
+            >brionex</a
+          >.
+        </p>
+        <p>
+          Basado en el proyecto de
+          <a
+            href="https://github.com/bymoxb"
+            target="_blank"
+            rel="noopener noreferrer"
+            >@bymoxb</a
+          >.
+        </p>
+      </footer>
+    </main>
   </body>
 </html>
